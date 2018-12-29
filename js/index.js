@@ -93,15 +93,15 @@ function getMusicList(callback){
     xhr.open('GET','../music.json', true)
     xhr.onload = function(){
         if(xhr.status >=200 && xhr.status <300 ||xhr.status===304){
-    callback(JSON.parse(this.responseText))
-  }else {
-    console.log('数据获取异常')
-  }
-  xhr.onerror = function(){
-    console.log('网络异常')
-  }
-}
-xhr.send()
+            callback(JSON.parse(this.responseText))
+        }else {
+            console.log('数据获取异常')
+        }
+    }
+    xhr.onerror = function(){
+        console.log('网络异常')
+        }
+    xhr.send()
 }
 //加载歌曲相关内容
 function loadMusic(musicObj){
