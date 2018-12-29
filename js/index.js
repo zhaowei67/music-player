@@ -87,10 +87,10 @@ $('.music .volume-total').onclick = function(e){
 $('.musicplayer .playlist').onclick = function(){
     $('.generate-list').classList.toggle('hide')
 }
-
+// 通过ajax从music.json得到音乐数据
 function getMusicList(callback){
     var xhr = new XMLHttpRequest()
-    xhr.open('GET','/music.json', true)
+    xhr.open('GET','../music.json', true)
     xhr.onload = function(){
         if(xhr.status >=200 && xhr.status <300 ||xhr.status===304){
     callback(JSON.parse(this.responseText))
@@ -103,7 +103,7 @@ function getMusicList(callback){
 }
 xhr.send()
 }
-
+//加载歌曲相关内容
 function loadMusic(musicObj){
     console.log(musicObj)
     audio.src = musicObj.src
@@ -111,7 +111,7 @@ function loadMusic(musicObj){
     $('.info .auther').innerText = musicObj.auther
     $('.info .cover img').setAttribute('src', musicObj.img)
 }
-
+//生成音乐播放列表
 function generateList(musicList){
     musicList.forEach(function(node,index){
         var li = document.createElement('li')
